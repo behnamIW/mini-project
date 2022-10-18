@@ -19,7 +19,8 @@ def test_add_product(mock_input, products):
     mock_read_products = Mock(return_value=expected_products)
     mock_insert_product_into_db = Mock()
 
-    actual = add_product(mock_insert_product_into_db, mock_read_products)
+    actual = add_product(mock_insert_product_into_db,
+                         mock_read_products)
 
     assert actual == expected_products
     mock_insert_product_into_db.assert_called_with("p3")

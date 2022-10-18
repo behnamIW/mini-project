@@ -1,5 +1,6 @@
 from .db_functions import read_from_db, execute_on_db
 from .utils import print_list, print_dict
+import json
 
 
 PRODUCTS_MENU_OPTIONS = {
@@ -14,7 +15,7 @@ PRODUCTS_MENU_OPTIONS = {
 # --------------db-------------------------
 def read_products():
     return read_from_db(
-        """
+    """
     SELECT 
         product_id
         , name as product_name
@@ -23,6 +24,11 @@ def read_products():
     ORDER BY product_id
     """
     )
+    
+
+def read_products():
+    with open('my_products.json') as f:
+        return json.load(f)
 
 
 def insert_product_into_db(product_name):
@@ -53,7 +59,8 @@ def delete_product_from_db(product_id):
 
 # ---------------------------------------
 def add_product(
-    insert_product_into_db=insert_product_into_db, read_products=read_products
+    insert_product_into_db=insert_product_into_db,
+    read_products=read_products
 ):
     product_name = input("enter product name: ")
     insert_product_into_db(product_name)

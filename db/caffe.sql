@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS orders(
     PRIMARY KEY (order_id ),
     FOREIGN KEY (product_id )
         REFERENCES products(product_id )
-        ON UPDATE RESTRICT ON DELETE CASCADE,
+        ON DELETE CASCADE,
     FOREIGN KEY (courier_id )
         REFERENCES couriers(courier_id )
-        ON UPDATE RESTRICT ON DELETE CASCADE
+        ON DELETE CASCADE
 );
